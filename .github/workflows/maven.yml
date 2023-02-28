@@ -1,5 +1,5 @@
 # This workflow will test a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-name: Java CI with Maven
+name: Java Test with Maven
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '18'
-        distribution: 'coretto'
+        distribution: 'corretto'
         cache: maven
     - name: Test with Maven
       run: mvn test
