@@ -3,7 +3,7 @@ package at.ac.fhcampuswien.fhmdb.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie {
+public class Movie implements Comparable<Movie>{
     private String title;
     private String description;
     private List<Genre> genre;
@@ -50,4 +50,9 @@ public class Movie {
 
         return movies;
     }
+
+    @Override
+	public int compareTo(Movie m) {
+		return this.getTitle().compareTo(m.getTitle());
+	}
 }
