@@ -29,6 +29,25 @@ public class Movie {
         List<Movie> movies = new ArrayList<>();
         // TODO add some dummy data here
 
+        List<Genre> genresFirstMovie = new ArrayList<>();
+        genresFirstMovie.add(Genre.ADVENTURE);
+        genresFirstMovie.add(Genre.ACTION);
+        Movie myMovie = new Movie("title", "description", genresFirstMovie);
+
+        List<Genre> genresSecondMovie = new ArrayList<>();
+        genresSecondMovie.add(Genre.CRIME);
+        genresSecondMovie.add(Genre.DRAMA);
+        Movie myOtherMovie = new Movie("Group project", "technical difficulties", genresSecondMovie);
+
+        List<Genre> genresThirdMovie = new ArrayList<>();
+        genresThirdMovie.add(Genre.ROMANCE);
+        genresThirdMovie.add(Genre.FAMILY);
+        Movie myThirdMovie = new Movie("Networking technologies", "is fun", genresThirdMovie);
+
+        movies.add(myMovie);
+        movies.add(myOtherMovie);
+        movies.add(myThirdMovie);
+
         return movies;
     }
 }
