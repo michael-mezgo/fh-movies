@@ -20,5 +20,7 @@ jobs:
         java-version: '18'
         distribution: 'corretto'
         cache: maven
+    - name: Maven Clean
+      run: mvn clean
     - name: Test with Maven
       run: mvn test
