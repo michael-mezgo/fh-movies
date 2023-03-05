@@ -23,6 +23,6 @@ jobs:
     - name: Maven Clean
       run: mvn clean
     - name: Maven Dependency
-      run: mvn dependency
+      run: mvn dependency:copy-dependencies
     - name: Test with Maven
       run: mvn test
