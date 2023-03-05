@@ -13,10 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class HomeController implements Initializable {
     @FXML
@@ -52,6 +49,24 @@ public class HomeController implements Initializable {
         // TODO add event handlers to buttons and call the regarding methods
         // either set event handlers in the fxml file (onAction) or add them here
 
+        /*
+        
+        searchBtn.setOnAction(actionEvent -> {
+            String searchTerm = searchField.getText().toLowerCase();
+            List<Movie> filteredMovies = new ArrayList<>();
+
+            for (Movie movie : allMovies) {
+                if (movie.getTitle().toLowerCase().contains(searchTerm) || movie.getDescription().toLowerCase().contains(searchTerm)) {
+                    filteredMovies.add(movie);
+                }
+            }
+
+            observableMovies.clear();
+            observableMovies.addAll(filteredMovies);
+        });
+
+         */
+
         // Sort button example:
         sortBtn.setOnAction(actionEvent -> {
             boolean isAscending  = false;
@@ -63,6 +78,7 @@ public class HomeController implements Initializable {
             }
             observableMovies = (ObservableList<Movie>) sortMovies(observableMovies, isAscending);
         });
+
     }
 
     List<Movie> sortMovies(List<Movie> movies, boolean ascending) { //default access modifier
