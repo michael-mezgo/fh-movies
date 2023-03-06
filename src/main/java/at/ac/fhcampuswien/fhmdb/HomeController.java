@@ -37,10 +37,10 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        observableMovies.addAll(allMovies);         // add dummy data to observable list
+        observableMovies.addAll(allMovies); // add dummy data to observable list
 
         // initialize UI stuff
-        movieListView.setItems(observableMovies);   // set data of observable list to list view
+        movieListView.setItems(observableMovies); // set data of observable list to list view
         movieListView.setCellFactory(movieListView -> new MovieCell()); // use custom cell factory to display data
 
         genreComboBox.getItems().addAll(Arrays.asList(Genre.values()));
@@ -49,14 +49,12 @@ public class HomeController implements Initializable {
         // TODO add event handlers to buttons and call the regarding methods
         // either set event handlers in the fxml file (onAction) or add them here
 
-        /*
-        
-        searchBtn.setOnAction(actionEvent -> {
+        searchBtn.setOnAction(actionEvent -> { // filter button
             String searchTerm = searchField.getText().toLowerCase();
             List<Movie> filteredMovies = new ArrayList<>();
 
             for (Movie movie : allMovies) {
-                if (movie.getTitle().toLowerCase().contains(searchTerm) || movie.getDescription().toLowerCase().contains(searchTerm)) {
+                if (movie.getTitle().toLowerCase().contains(searchTerm) || movie.getDescription().toLowerCase().contains(searchTerm) || movie.getGenre().contains(genreComboBox.getValue().toString())) {
                     filteredMovies.add(movie);
                 }
             }
@@ -65,7 +63,6 @@ public class HomeController implements Initializable {
             observableMovies.addAll(filteredMovies);
         });
 
-         */
 
         // Sort button example:
         sortBtn.setOnAction(actionEvent -> {
@@ -81,6 +78,7 @@ public class HomeController implements Initializable {
 
     }
 
+
     List<Movie> sortMovies(List<Movie> movies, boolean ascending) { //default access modifier
         Collections.sort(movies);
 
@@ -90,4 +88,5 @@ public class HomeController implements Initializable {
         }
         return movies;
     }
+
 }
