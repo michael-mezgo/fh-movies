@@ -79,4 +79,9 @@ class HomeControllerTest {
         // Then
         assertEquals(expected, actual);
     }
+
+    @Test
+    void demo_failing_test() {
+        assertTrue(false);
+    }
 }
