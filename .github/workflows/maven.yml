@@ -23,7 +23,7 @@ jobs:
     - name: Maven Clean
       run: mvn clean
     - name: Test with Maven
-      run: mvn test
+      run: mvn test --batch-mode
     - name: Report
       uses: dorny/test-reporter@v1
       if: always()
