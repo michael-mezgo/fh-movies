@@ -54,7 +54,7 @@ public class HomeController implements Initializable {
             List<Movie> filteredMovies = new ArrayList<>();
 
             for (Movie movie : allMovies) {
-                if (movie.getTitle().toLowerCase().contains(searchTerm) || movie.getDescription().toLowerCase().contains(searchTerm) || movie.getGenre().contains((Genre) genreComboBox.getValue())) {
+                if ((movie.getTitle().toLowerCase().contains(searchTerm) || movie.getDescription().toLowerCase().contains(searchTerm)) && movie.getGenre().contains((Genre) genreComboBox.getValue())) {
                     filteredMovies.add(movie);
                 }
             }
