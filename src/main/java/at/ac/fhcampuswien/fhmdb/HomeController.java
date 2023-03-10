@@ -60,10 +60,7 @@ public class HomeController implements Initializable {
             List<Movie> searchResult = searchMovies(searchTerm);
             List<Movie> genreResult = filterMoviesByGenre(selectedGenre);
 
-            for (Movie m : searchResult) {
-                if(genreResult.contains(m))
-                    filteredMovies.add(m);
-            }
+            filteredMovies.addAll(innerJoinMovies(searchResult, genreResult));
 
             observableMovies.clear();
             observableMovies.addAll(filteredMovies);
@@ -91,7 +88,7 @@ public class HomeController implements Initializable {
 
     }
 
-    List<Movie> sortMovies(List<Movie> movies, boolean ascending) { //default access modifier
+    static List<Movie> sortMovies(List<Movie> movies, boolean ascending) { //default access modifier
         Collections.sort(movies);
 
         if (! ascending)
@@ -121,5 +118,17 @@ public class HomeController implements Initializable {
                 }
             }
         return filteredMovies;
+    }
+
+    // ? has to be replaced with streams after next lecture
+    static List<Movie> innerJoinMovies (List<Movie> listOne, List<Movie> listTwo)
+    {
+        //Inner Join: https://www.w3schools.com/sql/img_innerjoin.gif
+        List<Movie> joinedMovies = new ArrayList<>();
+        for (Movie m : listOne) {
+                if(listTwo.contains(m))
+                    joinedMovies.add(m);
+            }
+        return joinedMovies;
     }
 }
