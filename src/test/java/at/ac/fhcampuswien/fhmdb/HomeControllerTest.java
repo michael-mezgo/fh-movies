@@ -51,6 +51,7 @@ class HomeControllerTest {
         // Given
         boolean isAscending = false;
 
+        //region createMovies
         List<Genre> genres = new ArrayList<>();
         genres.add(Genre.ACTION);
 
@@ -58,6 +59,7 @@ class HomeControllerTest {
         Movie b = new Movie("b", "this is movie b", genres);
         Movie aa = new Movie("aa", "this is movie aa", genres);
         Movie ab = new Movie("ab", "this is movie ab", genres);
+        //endregion
 
         List<Movie> givenMovies = new ArrayList<Movie>();
         givenMovies.add(b);
@@ -81,26 +83,37 @@ class HomeControllerTest {
         assertEquals(expected, actual);
     }
 
-    /*
     @Test
     void search_term_delivers_back_movies_with_search_term() {
         //Given
+        //region CreateMovies
+        List<Movie> givenMovies = new ArrayList<>();
+
+        List<Genre> genresFindingNemo = new ArrayList<>();
+        genresFindingNemo.add(Genre.ANIMATION);
+        genresFindingNemo.add(Genre.ADVENTURE);
+        genresFindingNemo.add(Genre.COMEDY);
+        Movie finingNemo = new Movie("Finding Nemo", "A clownfish sets out on a dangerous journey to find his son, who has been captured by divers, in this charming and visually stunning animated film.", genresFindingNemo);
+        givenMovies.add(finingNemo);
+
+        List<Genre> genresHungerGames = new ArrayList<>();
+        genresHungerGames.add(Genre.ACTION);
+        genresHungerGames.add(Genre.ADVENTURE);
+        genresHungerGames.add(Genre.SCIENCE_FICTION);
+        givenMovies.add(new Movie("The Hunger Games", "A teenage girl volunteers to take her younger sister's place in a televised fight to the death in this thrilling and dystopian sci-fi adventure.", genresHungerGames));
+        //endregion
+
         HomeController homeController = new HomeController();
-        homeController.genreComboBox.setValue(null);
-        homeController.searchField.setText("forrest");
+        String searchTerm = "nemo";
+
+        homeController.allMovies.clear();
+        homeController.allMovies.addAll(givenMovies);
 
         //When
-        homeController.searchBtn.fire();
-        ObservableList<Movie> observableMovies = homeController.getObservableMovies();
+        List<Movie> filteredMovies = homeController.searchMovies(searchTerm);
 
         //Then
-        assertEquals(1, observableMovies.size());
-        assertEquals("Forrest Gump", observableMovies.get(0).getTitle());
-    }
-     */
-
-    @Test
-    void demo_failing_test() {
-        assertTrue(false);
+        assertEquals(1, filteredMovies.size());
+        assertEquals(finingNemo, filteredMovies.get(0));
     }
 }

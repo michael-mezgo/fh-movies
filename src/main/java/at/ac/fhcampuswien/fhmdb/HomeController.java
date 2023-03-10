@@ -57,12 +57,12 @@ public class HomeController implements Initializable {
             Genre selectedGenre = (Genre) genreComboBox.getValue();
             List<Movie> filteredMovies = new ArrayList<>();
 
-            for (Movie movie : allMovies) {
-                boolean matchesSearchTerm = movie.getTitle().toLowerCase().contains(searchTerm) || movie.getDescription().toLowerCase().contains(searchTerm);
-                boolean matchesSelectedGenre = selectedGenre == null || movie.getGenre().contains(selectedGenre);
-                if (matchesSearchTerm && matchesSelectedGenre) {
-                    filteredMovies.add(movie);
-                }
+            List<Movie> searchResult = searchMovies(searchTerm);
+            List<Movie> genreResult = filterMoviesByGenre(selectedGenre);
+
+            for (Movie m : searchResult) {
+                if(genreResult.contains(m))
+                    filteredMovies.add(m);
             }
 
             observableMovies.clear();
@@ -91,10 +91,6 @@ public class HomeController implements Initializable {
 
     }
 
-    public ObservableList<Movie> getObservableMovies() {
-        return observableMovies;
-    }
-
     List<Movie> sortMovies(List<Movie> movies, boolean ascending) { //default access modifier
         Collections.sort(movies);
 
@@ -103,5 +99,27 @@ public class HomeController implements Initializable {
             Collections.reverse(movies);
         }
         return movies;
+    }
+
+    List<Movie> searchMovies(String searchTerm)
+    {
+        List<Movie> filteredMovies = new ArrayList<>();
+        for (Movie movie : allMovies) {
+                if (movie.getTitle().toLowerCase().contains(searchTerm) || movie.getDescription().toLowerCase().contains(searchTerm)) {
+                    filteredMovies.add(movie);
+                }
+            }
+        return filteredMovies;
+    }
+
+    List<Movie> filterMoviesByGenre(Genre selectedGenre)
+    {
+        List<Movie> filteredMovies = new ArrayList<>();
+        for (Movie movie : allMovies) {
+                if (movie.getGenre().contains(selectedGenre) || selectedGenre == null) {
+                    filteredMovies.add(movie);
+                }
+            }
+        return filteredMovies;
     }
 }
