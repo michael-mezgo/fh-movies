@@ -91,6 +91,10 @@ public class HomeController implements Initializable {
 
     }
 
+    public ObservableList<Movie> getObservableMovies() {
+        return observableMovies;
+    }
+
     List<Movie> sortMovies(List<Movie> movies, boolean ascending) { //default access modifier
         Collections.sort(movies);
 

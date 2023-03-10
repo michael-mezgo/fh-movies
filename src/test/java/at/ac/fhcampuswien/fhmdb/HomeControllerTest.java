@@ -2,6 +2,7 @@ package at.ac.fhcampuswien.fhmdb;
 
 import at.ac.fhcampuswien.fhmdb.models.Genre;
 import at.ac.fhcampuswien.fhmdb.models.Movie;
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -79,6 +80,24 @@ class HomeControllerTest {
         // Then
         assertEquals(expected, actual);
     }
+
+    /*
+    @Test
+    void search_term_delivers_back_movies_with_search_term() {
+        //Given
+        HomeController homeController = new HomeController();
+        homeController.genreComboBox.setValue(null);
+        homeController.searchField.setText("forrest");
+
+        //When
+        homeController.searchBtn.fire();
+        ObservableList<Movie> observableMovies = homeController.getObservableMovies();
+
+        //Then
+        assertEquals(1, observableMovies.size());
+        assertEquals("Forrest Gump", observableMovies.get(0).getTitle());
+    }
+     */
 
     @Test
     void demo_failing_test() {
