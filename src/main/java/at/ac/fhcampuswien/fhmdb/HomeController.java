@@ -49,12 +49,15 @@ public class HomeController implements Initializable {
         // TODO add event handlers to buttons and call the regarding methods
         // either set event handlers in the fxml file (onAction) or add them here
 
-        searchBtn.setOnAction(actionEvent -> { // filter button
+        searchBtn.setOnAction(actionEvent -> {
             String searchTerm = searchField.getText().toLowerCase();
+            Genre selectedGenre = (Genre) genreComboBox.getValue();
             List<Movie> filteredMovies = new ArrayList<>();
 
             for (Movie movie : allMovies) {
-                if ((movie.getTitle().toLowerCase().contains(searchTerm) || movie.getDescription().toLowerCase().contains(searchTerm)) && movie.getGenre().contains((Genre) genreComboBox.getValue())) {
+                boolean matchesSearchTerm = movie.getTitle().toLowerCase().contains(searchTerm) || movie.getDescription().toLowerCase().contains(searchTerm);
+                boolean matchesSelectedGenre = selectedGenre == null || movie.getGenre().contains(selectedGenre);
+                if (matchesSearchTerm && matchesSelectedGenre) {
                     filteredMovies.add(movie);
                 }
             }
