@@ -119,7 +119,7 @@ class HomeControllerTest {
     }
 
     @Test
-    void set_genre_delivers_back_movies_with_genre_returns_nemo() {
+    void set_genre_returns_nemo() {
         //Given
         //region CreateMovies
         List<Movie> givenMovies = new ArrayList<>();
@@ -153,7 +153,7 @@ class HomeControllerTest {
     }
 
     @Test
-    void set_genre_delivers_back_movies_with_genre_returns_no_movie() {
+    void set_genre_returns_no_movie() {
         //Given
         //region CreateMovies
         List<Movie> givenMovies = new ArrayList<>();
